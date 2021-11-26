@@ -62,4 +62,17 @@ public class CabInvoiceGeneratorTest
         Assert.assertEquals(expectedInvoiceSummary, summary);
     }
 	
+	@Test
+    public void givenUserIdAndRiderType_shouldReturnInvoiceSummary() 
+	{
+        String userId = "arafathbaig1997@gmail.com";
+        String type = "Normal";
+        Ride[] rides = {new Ride(2.0, 5),
+                new Ride(0.1, 1)};
+        cig.addRides(userId, rides);
+        InvoiceSummary summary = cig.calculateFare(rides, type);
+        InvoiceSummary expectedInvoiceSummary = cig.getInvoiceSummary(userId);
+        Assert.assertEquals(expectedInvoiceSummary, summary);
+    }
+	
 }
